@@ -424,7 +424,7 @@ export default function App() {
           {/* SCREEN 1: LANDING/HOME VIEW */}
           {currentRoute.name === "home" && (
             <div className="space-y-16 py-8">
-              {/* Classical Kite Brand Hero Section */}
+              {/* Kite Brand Hero Section */}
               <div className="relative text-center py-16 px-4 rounded-2xl kite-gradient border border-kite-border overflow-hidden shadow-xs">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-kite-primary/5 rounded-full blur-2xl"></div>
                 <div className="absolute bottom-0 left-0 w-48 h-48 bg-kite-accent/5 rounded-full blur-3xl"></div>
@@ -435,8 +435,8 @@ export default function App() {
                     <Sparkles className="w-3 h-3 text-kite-primary" /> Kite Blockchain Passport Identity
                   </span>
 
-                  <h1 className="font-instrument text-5xl sm:text-7xl font-normal leading-tight text-kite-fg tracking-tight">
-                    Every agent. <span className="italic">One profile.</span>
+                  <h1 className="text-5xl sm:text-7xl font-bold leading-tight text-kite-fg tracking-tight">
+                    Every agent. <span>One profile.</span>
                   </h1>
 
                   <p className="text-base sm:text-lg text-kite-fg/75 max-w-xl mx-auto leading-relaxed">
@@ -508,7 +508,7 @@ export default function App() {
               {/* Three Column "Why AgentID" Value Proposition */}
               <div className="space-y-6">
                 <div className="text-center space-y-2">
-                  <h2 className="font-instrument text-4xl text-kite-fg">Engineered for Autonomous Trust</h2>
+                  <h2 className="text-4xl font-semibold tracking-tight text-kite-fg">Engineered for Autonomous Trust</h2>
                   <p className="text-sm text-kite-fg/60 max-w-md mx-auto">Providing a unified layer to interact with, secure, and fund autonomous entities.</p>
                 </div>
 
@@ -557,7 +557,7 @@ export default function App() {
               <div id="featured-agents-section" className="space-y-6">
                 <div className="flex items-center justify-between border-b border-kite-border pb-3">
                   <div className="space-y-1">
-                    <h3 className="font-instrument text-3xl font-normal text-kite-fg flex items-center gap-2">
+                    <h3 className="text-3xl font-semibold text-kite-fg flex items-center gap-2">
                       Sample Agents
                       <span className="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-semibold text-kite-fg/50 bg-kite-muted border border-kite-border/60 px-1.5 py-0.5 rounded">
                         <Sprout className="w-3 h-3" /> Curated
@@ -648,7 +648,7 @@ export default function App() {
                       <AlertTriangle className="w-5 h-5" />
                     </div>
                     <div className="flex-1 min-w-0 space-y-2">
-                      <h2 className="font-instrument text-3xl text-kite-fg">
+                      <h2 className="text-3xl font-semibold text-kite-fg">
                         {profileResult.error === "invalid_address"
                           ? "That doesn't look like a Kite address"
                           : profileResult.error === "not_found"
@@ -1062,7 +1062,7 @@ export default function App() {
                       <Zap className="w-4 h-4" />
                     </div>
                     <div>
-                      <h5 className="font-serif italic font-normal text-sm text-kite-fg">
+                      <h5 className="text-sm font-semibold text-kite-fg">
                         Kite {network === "mainnet" ? "Mainnet" : "Testnet"} Live
                       </h5>
                       <p className="text-[10px] text-kite-fg/60">
@@ -1094,7 +1094,7 @@ export default function App() {
                 </button>
 
                 <div className="space-y-1">
-                  <h2 className="font-instrument text-4xl text-kite-fg">Edit Display Details</h2>
+                  <h2 className="text-4xl font-semibold tracking-tight text-kite-fg">Edit Display Details</h2>
                   <p className="text-xs text-kite-fg/50 font-medium">Local-only preview — saved to your browser for this session.</p>
                 </div>
 
@@ -1232,7 +1232,7 @@ export default function App() {
           <div className="relative w-full max-w-md bg-kite-card border border-kite-border p-6 rounded-xl shadow-xl space-y-5">
             <div className="flex items-center justify-between border-b border-kite-border/40 pb-3">
               <div>
-                <h3 className="font-instrument text-2xl text-kite-fg font-normal leading-none mb-1">
+                <h3 className="text-2xl font-semibold text-kite-fg leading-none mb-1">
                   Send Tip (preview)
                 </h3>
                 <p className="text-[10px] text-kite-fg/50 font-mono">

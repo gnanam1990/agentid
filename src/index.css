@@ -10,9 +10,8 @@
   --color-kite-destructive: var(--kite-destructive);
   --color-kite-card: var(--kite-card);
 
-  --font-serif: "Instrument Serif", Georgia, serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-sans: "Geist", "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "Geist Mono", "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 }
 
 :root {
@@ -41,7 +40,17 @@ body {
   background-color: var(--kite-bg);
   color: var(--kite-fg);
   font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   transition: background-color 0.2s, color 0.2s;
+}
+
+code,
+pre,
+.font-mono {
+  font-family: var(--font-mono);
+  font-feature-settings: "zero", "ss02";
 }
 
 .kite-gradient {
@@ -50,9 +59,4 @@ body {
 
 .dark .kite-gradient {
   background: linear-gradient(135deg, #1F1A14 0%, #2A241B 50%, #3D352A 100%);
-}
-
-.font-instrument {
-  font-family: "Instrument Serif", Georgia, serif;
-  font-style: italic;
 }

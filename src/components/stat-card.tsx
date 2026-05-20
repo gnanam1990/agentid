@@ -68,7 +68,7 @@ export function StatCard({
           {label}
         </div>
         <div className="flex items-baseline gap-2 mb-2">
-          <div className="text-2xl font-bold font-sans tracking-tight text-kite-fg">
+          <div className="text-2xl font-bold font-mono tracking-tight text-kite-fg">
             {value}
           </div>
           {change && (

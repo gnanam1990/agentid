@@ -38,7 +38,7 @@ export function ProfileHero({ profile, isOwner, onEdit, onTipClick }: ProfileHer
 
           <div className="text-center sm:text-left min-w-0 flex-1">
             <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 flex-wrap mb-1.5 justify-center sm:justify-start">
-              <h1 className="font-instrument text-4xl sm:text-5xl font-normal text-kite-fg tracking-tight leading-none">
+              <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-kite-fg leading-none">
                 {profile.display_name}
               </h1>
               <div className="flex justify-center flex-wrap gap-2">
