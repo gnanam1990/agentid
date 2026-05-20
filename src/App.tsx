@@ -23,6 +23,7 @@ import {
   FileText,
   AlertTriangle,
   Sprout,
+  FlaskConical,
   Wifi,
   WifiOff
 } from "lucide-react";
@@ -32,6 +33,7 @@ import {
   MOCK_FEATURED_AGENTS,
   MOCK_SERVICES,
   MOCK_PURCHASES,
+  MOCK_OTHER_PROFILES,
   getProfileForAddress
 } from "./lib/mock-data";
 import { fetchProfile, type LiveAgentProfile, type ProfileResult } from "./lib/profile";
@@ -225,36 +227,43 @@ export default function App() {
     setActivityItems(null);
 
     if (demoMode && isValidAddress(addr)) {
-      const mock = getProfileForAddress(addr);
-      const synthetic: LiveAgentProfile = {
-        address: mock.address,
-        display_name: mock.display_name,
-        bio: mock.bio,
-        avatar_url: mock.avatar_url,
-        is_contract: false,
-        contract_name: null,
-        kite_balance: "0.0000",
-        kite_balance_wei: 0n,
-        token_count: 0,
-        tier: mock.tier,
-        score: mock.score,
-        is_kpass_verified: mock.is_kpass_verified,
-        socials: mock.socials,
-        stats: {
-          total_transactions: mock.stats.total_transactions,
-          token_transfers: 0,
-          services_used: mock.stats.services_used,
-          products_bought: mock.stats.products_bought
-        },
-        first_seen: mock.first_seen,
-        network,
-        fetched_at: new Date().toISOString(),
-        has_onchain_history: true,
-        is_live_data: true
-      };
-      setProfileResult(synthetic);
-      setActivityItems([]);
-      return;
+      const isKnownDemoAddress = Object.keys(MOCK_OTHER_PROFILES).some(
+        (demoAddress) => demoAddress.toLowerCase() === addr.toLowerCase()
+      );
+
+      if (isKnownDemoAddress) {
+        const mock = getProfileForAddress(addr);
+        const synthetic: LiveAgentProfile = {
+          address: mock.address,
+          display_name: mock.display_name,
+          bio: mock.bio,
+          avatar_url: mock.avatar_url,
+          is_contract: false,
+          contract_name: null,
+          kite_balance: "0.0000",
+          kite_balance_wei: 0n,
+          token_count: 0,
+          tier: mock.tier,
+          score: mock.score,
+          is_kpass_verified: mock.is_kpass_verified,
+          socials: mock.socials,
+          stats: {
+            total_transactions: mock.stats.total_transactions,
+            token_transfers: 0,
+            services_used: mock.stats.services_used,
+            products_bought: mock.stats.products_bought
+          },
+          first_seen: mock.first_seen,
+          network,
+          fetched_at: new Date().toISOString(),
+          has_onchain_history: true,
+          is_live_data: true,
+          is_demo: true
+        };
+        setProfileResult(synthetic);
+        setActivityItems([]);
+        return;
+      }
     }
 
     fetchProfileCached(addr, network).then((p) => {
@@ -484,6 +493,14 @@ export default function App() {
                         0x6F47…DD5B
                       </button>
                     </div>
+                    <div className="mt-3 text-center">
+                      <a
+                        href="/0xc82C2ADE9BbacF01C2168756Ce66E88F69676967?demo=true"
+                        className="text-xs text-kite-fg/55 underline underline-offset-4 hover:text-kite-fg transition-colors"
+                      >
+                        See a demo profile →
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -663,6 +680,19 @@ export default function App() {
               {/* Loaded profile */}
               {activeProfile && (
                 <>
+                  {activeProfile.is_demo && (
+                    <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700 rounded-lg p-3 mb-4 flex items-center gap-2 text-sm text-amber-950 dark:text-amber-100">
+                      <FlaskConical className="w-4 h-4 text-amber-600 dark:text-amber-400 flex-shrink-0" />
+                      <span>
+                        <strong>Demo mode.</strong> This profile is synthetic mock data for screenshots and previews. Remove{" "}
+                        <code className="font-mono text-xs bg-amber-100 dark:bg-amber-900/40 px-1 rounded">
+                          ?demo=true
+                        </code>{" "}
+                        from the URL to load real on-chain data from KiteScan.
+                      </span>
+                    </div>
+                  )}
+
                   <ProfileHero
                     profile={activeProfile}
                     isOwner={kpassConnected}
@@ -675,12 +705,19 @@ export default function App() {
 
                   {/* Freshness footer */}
                   <div className="flex items-center justify-between text-[11px] text-kite-fg/55 -mt-4 px-1">
-                    <span className="inline-flex items-center gap-1.5">
-                      <Wifi className="w-3 h-3 text-kite-accent" />
-                      <span className="font-medium">Live from KiteScan</span>
-                      <span className="opacity-50">•</span>
-                      <span>Updated {relativeTime(activeProfile.fetched_at)}</span>
-                    </span>
+                    {activeProfile.is_demo ? (
+                      <span className="inline-flex items-center gap-1.5">
+                        <FlaskConical className="w-3 h-3 text-amber-600 dark:text-amber-400" />
+                        <span>Demo data — synthetic profile</span>
+                      </span>
+                    ) : (
+                      <span className="inline-flex items-center gap-1.5">
+                        <Wifi className="w-3 h-3 text-kite-accent" />
+                        <span className="font-medium">Live from KiteScan</span>
+                        <span className="opacity-50">•</span>
+                        <span>Updated {relativeTime(activeProfile.fetched_at)}</span>
+                      </span>
+                    )}
                     {activeProfile.is_contract && (
                       <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-kite-primary/10 text-kite-primary font-semibold uppercase tracking-wider">
                         Smart contract{activeProfile.contract_name ? ` • ${activeProfile.contract_name}` : ""}

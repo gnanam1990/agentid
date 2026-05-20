@@ -41,6 +41,7 @@ export interface LiveAgentProfile {
   has_onchain_history: boolean;
 
   is_live_data: true;
+  is_demo?: boolean;
 }
 
 export interface ProfileError {
