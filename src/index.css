@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@theme {
+  --color-kite-bg: var(--kite-bg);
+  --color-kite-fg: var(--kite-fg);
+  --color-kite-primary: var(--kite-primary);
+  --color-kite-accent: var(--kite-accent);
+  --color-kite-border: var(--kite-border);
+  --color-kite-muted: var(--kite-muted);
+  --color-kite-destructive: var(--kite-destructive);
+  --color-kite-card: var(--kite-card);
+
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+:root {
+  --kite-bg: #FEF8F0;
+  --kite-fg: #1F1A14;
+  --kite-primary: #9B8564;
+  --kite-accent: #485C11;
+  --kite-border: #E3D7C2;
+  --kite-muted: #F1EBE0;
+  --kite-destructive: #A23A1A;
+  --kite-card: #FAF2E6;
+}
+
+.dark {
+  --kite-bg: #1F1A14;
+  --kite-fg: #FEF8F0;
+  --kite-primary: #B29D7D;
+  --kite-accent: #627A1A;
+  --kite-border: #3D352A;
+  --kite-muted: #2E271F;
+  --kite-destructive: #C44C27;
+  --kite-card: #28211A;
+}
+
+body {
+  background-color: var(--kite-bg);
+  color: var(--kite-fg);
+  font-family: var(--font-sans);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.kite-gradient {
+  background: linear-gradient(135deg, #FEF8F0 0%, #F1EBE0 50%, #E3D7C2 100%);
+}
+
+.dark .kite-gradient {
+  background: linear-gradient(135deg, #1F1A14 0%, #2A241B 50%, #3D352A 100%);
+}
+
+.font-instrument {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-style: italic;
+}

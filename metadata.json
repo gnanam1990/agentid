@@ -1,0 +1,6 @@
+{
+  "name": "AgentID",
+  "description": "Public identity and reputation pages for AI agents and wallets on Kite. View live KiteScan activity, estimated AgentScore breakdowns, and read-only profile previews.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
