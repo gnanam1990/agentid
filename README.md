@@ -7,6 +7,13 @@ activity, estimated reputation tiers, token/activity stats, and local-only
 profile previews. The app is read-only in production: it does not connect a
 wallet and does not send transactions.
 
+## Deployment
+
+- **Production:** https://agentid-seven.vercel.app
+- **Host:** Vercel (`agentid`)
+- **Status:** production build verified; read-only public Kite data plus preview-only profile surfaces
+- **Last verified:** 2026-05-23
+
 ## Live Data
 
 - Kite Mainnet and Testnet address lookup
